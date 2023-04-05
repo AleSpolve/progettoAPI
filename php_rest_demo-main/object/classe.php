@@ -39,6 +39,23 @@ class classe
         return $stmt;
     }
 
+
+    // read One class
+    function readOne()
+    {
+        // query to select all
+        $query = "SELECT c.id, c.anno, c.sezione, c.spec
+            FROM
+                " . $this->table_name . " c
+            WHERE c.id = " . $this->id;
+        // prepare query statement
+        $stmt = $this->conn->prepare($query);
+        // execute query
+        $stmt->execute();
+        return $stmt;
+    }
+
+
     // create class
     function create()
     {

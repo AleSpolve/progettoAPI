@@ -5,8 +5,8 @@ header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 
 // include database and object files
-include_once '../../config/db.php';
-include_once '../../object/classe.php';
+include_once './config/db.php';
+include_once './object/classe.php';
 
 // instantiate database and classe object
 $database = new db();

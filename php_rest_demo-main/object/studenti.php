@@ -29,11 +29,25 @@ class studenti
     function read()
     {
         // query to select all
-        $query = "SELECT s.id, s.name
+        $query = "SELECT s.id, s.nome
             FROM
                 " . $this->table_name . " s
             ORDER BY
                 s.id";
+        // prepare query statement
+        $stmt = $this->conn->prepare($query);
+        // execute query
+        $stmt->execute();
+        return $stmt;
+    }
+
+    function readOne()
+    {
+        // query to select all
+        $query = "SELECT s.id, s.nome, s.cognome, s.codice_fiscale, s.data_nascita
+            FROM
+                " . $this->table_name . " s
+            WHERE c.id = " . $this->id;
         // prepare query statement
         $stmt = $this->conn->prepare($query);
         // execute query
