@@ -21,9 +21,9 @@ $classe = new classe($db);
 $data = json_decode(file_get_contents("php://input", true));
 
 // set classe property value
-$classe->name = $data->name;
-$classe->cognome = $data->cognome;
-$classe->codiceFiscale = $data->codiceFiscale;
+$classe->anno = $data->anno;
+$classe->sezione = $data->sezione;
+$classe->spec = $data->spec;
 // create the classe
 if ($classe->create()) {
     echo '{';

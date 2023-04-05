@@ -4,7 +4,7 @@ class Db
 {
 
     private $host = "mio_dbserver:3306";
-    private $db_name = "test";
+    private $db_name = "school";
     private $username = "root";
     private $password = "ciccio";
     public $conn;

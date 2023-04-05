@@ -27,7 +27,7 @@ class classe
     function read()
     {
         // query to select all
-        $query = "SELECT c.id, c.sezione
+        $query = "SELECT c.id, c.anno, c.sezione
             FROM
                 " . $this->table_name . " c
             ORDER BY
@@ -76,7 +76,7 @@ class classe
         $query = "UPDATE
                 " . $this->table_name . "
             SET
-            nanno=:anno,
+            anno=:anno,
             sezione=:sezione,
             spec=:spec
             WHERE

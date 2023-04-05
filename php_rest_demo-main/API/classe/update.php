@@ -23,9 +23,9 @@ $data = json_decode(file_get_contents("php://input", true));
 // set ID property of classe to be updated
 $classe->id = $data->id;
 // set classe property value
-$classe->nickname = $data->nickname;
-$classe->age = $data->age;
-$classe->level = $data->level;
+$classe->anno = $data->anno;
+$classe->sezione = $data->sezione;
+$classe->spec = $data->spec;
 // update the classe
 if ($classe->update()) {
     echo '{';

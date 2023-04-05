@@ -31,7 +31,8 @@ if ($num > 0) {
         extract($row);
         $classe_item = array(
             "id" => $row['id'],
-            "name" => $row['name']
+            "anno" => $row['anno'],
+            "sezione" => $row['sezione']
         );
         array_push($classe_arr["records"], $classe_item);
     }
