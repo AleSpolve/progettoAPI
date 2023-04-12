@@ -9,8 +9,8 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
 
 
 // include database and object files
-include_once '../../config/db.php';
-include_once '../../object/classe.php';
+include_once './config/db.php';
+include_once './object/classe.php';
 
 $database = new db();
 $db = $database->getConnection();
@@ -19,12 +19,12 @@ $db = $database->getConnection();
 $classe = new classe($db);
 
 // set ID property of classe to be deleted
-$classe->id = filter_input(INPUT_GET, 'id');
+$classe->id = $id;
 
 // delete the classe
 if ($classe->delete()) {
     echo '{';
-    echo '"message": "classe was deleted."';
+    echo '"message": "classe ' . $id . ' was deleted."';
     echo '}';
 }
 

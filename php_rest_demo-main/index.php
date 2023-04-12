@@ -16,20 +16,20 @@
                         case 'GET':
                               require __DIR__ . "/API/classe/read.php";      
                               break;
-                       /* case 'POST':
+                        case 'POST':
                               require __DIR__ . "/API/classe/create.php";      
                               break;
-                        */
+                        
                      }         
                   }else if ( $uri[1] == "studenti") {
                         switch ( $method ) {
                            case 'GET':
                                  require __DIR__ . "/API/studenti/read.php";      
                                  break;
-                          /* case 'POST':
+                           case 'POST':
                                  require __DIR__ . "/API/classe/create.php";      
                                  break;
-                           */
+                           
                         }         
                      }
                   
@@ -41,8 +41,14 @@
                         case 'GET':
                               require __DIR__ . "/API/classe/readOne.php";      
                               break;
+                        case 'DELETE':
+                              require __DIR__ . "/API/classe/delete.php";      
+                              break;
+                        case 'PUT':
+                              require __DIR__ . "/API/classe/update.php";      
+                              break;
                         }
-                  }else if ( $uri[1] == "studenti") {
+                  } else if ( $uri[1] == "studenti") {
                         switch ( $method ) {
                         case 'GET':
                               require __DIR__ . "/API/classe/readOne.php";      
@@ -50,11 +56,18 @@
                         }
                   }
                   break;  
-                  
-         
+            case 4:
+                  $id = (int) $uri[2];
+                  if ( $uri[3] == "studenti") {
+                        switch ( $method ) {
+                        case 'GET':
+                              require __DIR__ . "/API/classe/readstudent.php";      
+                              break;
+                        }
+                  break;
                         
 
       }
 
-
+      }
 ?>

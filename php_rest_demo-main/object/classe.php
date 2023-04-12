@@ -55,6 +55,20 @@ class classe
         return $stmt;
     }
 
+    //read student on class
+    function readstudents(){
+        $query = "SELECT s.nome,s.cognome,s.codice_fiscale,s.data_nascita,s.id_classe
+            FROM
+                " . $this->table_name . " c
+            JOIN students as s ON s.id_classe=c.id
+            WHERE c.id = " . $this->id;
+        // prepare query statement
+        $stmt = $this->conn->prepare($query);
+        // execute query
+        $stmt->execute();
+        return $stmt;
+    }
+
 
     // create class
     function create()
@@ -103,13 +117,16 @@ class classe
         $stmt = $this->conn->prepare($query);
 
         // sanitize
-        $this->name = htmlspecialchars(strip_tags($this->name));
+        $this->anno = htmlspecialchars(strip_tags($this->anno));
+        $this->sezione = htmlspecialchars(strip_tags($this->sezione));
+        $this->spec = htmlspecialchars(strip_tags($this->spec));
         $this->id = htmlspecialchars(strip_tags($this->id));
 
         // bind new values
         $stmt->bindParam(":anno", $this->anno);
         $stmt->bindParam(":sezione", $this->sezione);
         $stmt->bindParam(":spec", $this->spec);
+        $stmt->bindParam(":id", $this->id);
        
         // execute the query
         if ($stmt->execute()) {
@@ -122,23 +139,34 @@ class classe
     // delete the class
     function delete()
     {
-        // delete query
-        $query = "DELETE FROM " . $this->table_name . " WHERE id = ?";
-
-        // prepare query
+        // check if selected class contains students
+        $query = "SELECT * FROM students WHERE id_classe = $this->id";        
+        // prepare query statement
         $stmt = $this->conn->prepare($query);
-
-        // sanitize
-        $this->id = htmlspecialchars(strip_tags($this->id));
-
-        // bind id of record to delete
-        $stmt->bindParam(1, $this->id);
-
         // execute query
-        if ($stmt->execute()) {
-            return true;
-        }
+        $stmt->execute();        
+       
+        if (  $stmt -> rowCount() > 0 ) {
+            return false;    
+        } else {
+            // delete query
+            $query = "DELETE FROM " . $this->table_name . " WHERE id = ?";
 
-        return false;
+            // prepare query
+            $stmt = $this->conn->prepare($query);
+
+            // sanitize
+            $this->id = htmlspecialchars(strip_tags($this->id));
+
+            // bind id of record to delete
+            $stmt->bindParam(1, $this->id);
+
+            // execute query
+            if ($stmt->execute()) {
+                return true;
+            }
+
+            return false;
+        }
     }
 }

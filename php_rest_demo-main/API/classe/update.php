@@ -8,8 +8,8 @@ header("Access-Control-Max-Age: 3600");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
 // include database and object files
-include_once '../../config/db.php';
-include_once '../../object/classe.php';
+include_once './config/db.php';
+include_once './object/classe.php';
 
 $database = new db();
 $db = $database->getConnection();
@@ -21,7 +21,7 @@ $classe = new classe($db);
 $data = json_decode(file_get_contents("php://input", true));
 
 // set ID property of classe to be updated
-$classe->id = $data->id;
+$classe->id = $id;
 // set classe property value
 $classe->anno = $data->anno;
 $classe->sezione = $data->sezione;

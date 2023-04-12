@@ -19,7 +19,7 @@ $db = $database->getConnection();
 $studenti = new studenti($db);
 
 // set ID property of studenti to be deleted
-$studenti->id = filter_input(INPUT_GET, 'id');
+$studenti->id = $id;
 
 // delete the studenti
 if ($studenti->delete()) {
