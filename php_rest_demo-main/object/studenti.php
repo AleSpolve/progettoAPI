@@ -47,7 +47,21 @@ class studenti
         $query = "SELECT s.id, s.nome, s.cognome, s.codice_fiscale, s.data_nascita
             FROM
                 " . $this->table_name . " s
-            WHERE c.id = " . $this->id;
+            WHERE s.id = " . $this->id;
+        // prepare query statement
+        $stmt = $this->conn->prepare($query);
+        // execute query
+        $stmt->execute();
+        return $stmt;
+    }
+
+    //read class
+    function readclass(){
+        $query = "SELECT DISTINCT c.id, c.anno, c.sezione, c.spec
+            FROM
+                " . $this->table_name . " s
+            JOIN class as c ON s.id_classe=c.id
+            WHERE s.id_classe = " . $this->id;    
         // prepare query statement
         $stmt = $this->conn->prepare($query);
         // execute query

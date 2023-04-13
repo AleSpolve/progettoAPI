@@ -9,7 +9,7 @@ header("Content-Type: application/json; charset=UTF-8");
 include_once './config/db.php';
 include_once './object/studenti.php';
 
-// instantiate database and studenti object
+// instantiate database and classe object
 $database = new db();
 $db = $database->getConnection();
 
@@ -18,13 +18,13 @@ $studenti = new studenti($db);
 $studenti->id = $id;
 
 // query studenti
-$stmt = $studenti->readOne();
+$stmt = $studenti->readclass();
 $num = $stmt->rowCount();
 
 // check if more than 0 record found
 if ($num > 0) {
     // studenti array
-    $studenti_arr = array();
+    $studenti_arr= array();
     $studenti_arr["records"] = array();
 
     // retrieve table contents
@@ -33,10 +33,9 @@ if ($num > 0) {
         extract($row);
         $studenti_item = array(
             "id" => $row['id'],
-            "nome" => $row['nome'],
-            "cognome" => $row['cognome'],
-            "codice_fiscale" => $row['codice_fiscale'],
-            "data_nascita" => $row['data_nascita']
+            "anno" => $row['anno'],
+            "sezione" => $row['sezione'],
+            "spec" => $row['spec']
         );
         array_push($studenti_arr["records"], $studenti_item);
     }

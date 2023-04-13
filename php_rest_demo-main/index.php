@@ -7,7 +7,7 @@
       $uri = rtrim($uri,'/');
       $uri = explode('/',$uri);
 
-      //var_dump($uri);
+      var_dump($uri);
       
       switch( count($uri) ) {
             case 2:
@@ -51,7 +51,7 @@
                   } else if ( $uri[1] == "studenti") {
                         switch ( $method ) {
                         case 'GET':
-                              require __DIR__ . "/API/classe/readOne.php";      
+                              require __DIR__ . "/API/studenti/readOne.php";      
                               break;
                         }
                   }
@@ -64,10 +64,18 @@
                               require __DIR__ . "/API/classe/readstudent.php";      
                               break;
                         }
+                  }else if ($uri[1] == "studenti") {
+                        switch ( $method ) {
+                              case 'GET':
+                                    require __DIR__ . "/API/studenti/readclass.php";      
+                                    break;
+                              }     
+                  }
+                  
                   break;
                         
 
       }
 
-      }
+      
 ?>
