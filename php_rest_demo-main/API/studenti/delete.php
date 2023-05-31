@@ -9,8 +9,8 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
 
 
 // include database and object files
-include_once '../../config/db.php';
-include_once '../../object/studenti.php';
+include_once './config/db.php';
+include_once './object/studenti.php';
 
 $database = new db();
 $db = $database->getConnection();

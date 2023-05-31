@@ -90,7 +90,6 @@ class classe
         $stmt->bindParam(":anno", $this->anno);
         $stmt->bindParam(":sezione", $this->sezione);
         $stmt->bindParam(":spec", $this->spec);
-       
 
         // execute query
         if ($stmt->execute()) {
@@ -146,7 +145,7 @@ class classe
         // execute query
         $stmt->execute();        
        
-        if (  $stmt -> rowCount() > 0 ) {
+        if ($stmt -> rowCount() > 0) {
             return false;    
         } else {
             // delete query
@@ -158,6 +157,7 @@ class classe
             // sanitize
             $this->id = htmlspecialchars(strip_tags($this->id));
 
+            var_dump($this->id);
             // bind id of record to delete
             $stmt->bindParam(1, $this->id);
 

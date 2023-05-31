@@ -13,11 +13,11 @@ class studenti
     private $table_name = "students";
     // object properties
     public $id;
-    public $name;
+    public $nome;
     public $cognome;
-    public $codiceFiscale;
-    public $dataNascita;
-    public $idClasse;
+    public $codice_fiscale;
+    public $data_nascita;
+    public $id_classe;
 
     // constructor with $db as database connection
     public function __construct($db)
@@ -76,24 +76,23 @@ class studenti
         $query = "INSERT INTO
                 " . $this->table_name . "
             SET
-                name=:name,
+                nome=:nome,
                 cognome=:cognome,
-                codice_fiscale=:codice_fiscale
-                data_nascita=:data_nascita
+                codice_fiscale=:codice_fiscale,
+                data_nascita=:data_nascita,
                 id_classe=:id_classe";
                 
         // prepare query
         $stmt = $this->conn->prepare($query);
         // sanitize
         $this->name = htmlspecialchars(strip_tags($this->name));
-
         // bind values
-        $stmt->bindParam(":name", $this->name);
-        $stmt->bindParam(":cognome", $this->cognome);
-        $stmt->bindParam(":codice_fiscale", $this->codiceFiscale);
-        $stmt->bindParam(":data_nascita", $this->dataNascita);
-        $stmt->bindParam(":id_classe", $this->idClasse);
 
+        $stmt->bindParam(":nome", $this->nome);
+        $stmt->bindParam(":cognome", $this->cognome);
+        $stmt->bindParam(":codice_fiscale", $this->codice_fiscale);
+        $stmt->bindParam(":data_nascita", $this->data_nascita);
+        $stmt->bindParam(":id_classe", $this->id_classe);
 
         // execute query
         if ($stmt->execute()) {
@@ -110,28 +109,29 @@ class studenti
         $query = "UPDATE
                 " . $this->table_name . "
             SET
-            name=:name,
+            nome=:nome,
             cognome=:cognome,
-            codice_fiscale=:codice_fiscale
-            data_nascita=:data_nascita
+            codice_fiscale=:codice_fiscale,
+            data_nascita=:data_nascita,
             id_classe=:id_classe
             WHERE
-                id = :id";
+                id =:id";
 
         // prepare query statement
         $stmt = $this->conn->prepare($query);
-
+        
         // sanitize
         $this->name = htmlspecialchars(strip_tags($this->name));
         $this->id = htmlspecialchars(strip_tags($this->id));
 
         // bind new values
-        $stmt->bindParam(':name', $this->name);
-        $stmt->bindParam(':cognome', $this->cognome);
         $stmt->bindParam(':id', $this->id);
-        $stmt->bindParam(':codice_fiscale', $this->codiceFiscale);
-        $stmt->bindParam(':data_nascita', $this->dataNascita);
-        $stmt->bindParam(':id_classe', $this->idClasse);
+        $stmt->bindParam(':nome', $this->nome);
+        $stmt->bindParam(':cognome', $this->cognome);
+        $stmt->bindParam(':codice_fiscale', $this->codice_fiscale);
+        $stmt->bindParam(':data_nascita', $this->data_nascita);
+        $stmt->bindParam(':id_classe', $this->id_classe);
+        
         // execute the query
         if ($stmt->execute()) {
             return true;

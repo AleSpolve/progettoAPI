@@ -21,9 +21,12 @@ $studenti = new studenti($db);
 $data = json_decode(file_get_contents("php://input", true));
 
 // set studenti property value
-$studenti->name = $data->name;
+$studenti->nome = $data->nome;
 $studenti->cognome = $data->cognome;
-$studenti->codiceFiscale = $data->codiceFiscale;
+$studenti->codice_fiscale = $data->codice_fiscale;
+$studenti->data_nascita = $data->data_nascita;
+$studenti->id_classe = $data->id_classe;
+
 // create the studenti
 if ($studenti->create()) {
     echo '{';

@@ -7,7 +7,7 @@
       $uri = rtrim($uri,'/');
       $uri = explode('/',$uri);
 
-      var_dump($uri);
+      
       
       switch( count($uri) ) {
             case 2:
@@ -27,7 +27,7 @@
                                  require __DIR__ . "/API/studenti/read.php";      
                                  break;
                            case 'POST':
-                                 require __DIR__ . "/API/classe/create.php";      
+                                 require __DIR__ . "/API/studenti/create.php";      
                                  break;
                            
                         }         
@@ -52,6 +52,12 @@
                         switch ( $method ) {
                         case 'GET':
                               require __DIR__ . "/API/studenti/readOne.php";      
+                              break;
+                        case 'DELETE':
+                              require __DIR__ . "/API/studenti/delete.php";      
+                              break;
+                        case 'PUT':
+                              require __DIR__ . "/API/studenti/update.php";      
                               break;
                         }
                   }

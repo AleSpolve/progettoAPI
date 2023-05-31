@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: mio_dbserver
--- Generation Time: Apr 05, 2023 at 08:23 AM
+-- Generation Time: May 31, 2023 at 08:25 AM
 -- Server version: 5.7.41
 -- PHP Version: 8.1.16
 
@@ -39,7 +39,9 @@ CREATE TABLE `class` (
 --
 
 INSERT INTO `class` (`id`, `anno`, `sezione`, `spec`) VALUES
-(2, 5, 'A', 'info');
+(2, 5, 'c', 'auto'),
+(3, 5, 'B', 'tele'),
+(5, 5, 'D', 'ele');
 
 -- --------------------------------------------------------
 
@@ -62,8 +64,8 @@ CREATE TABLE `students` (
 
 INSERT INTO `students` (`id`, `nome`, `cognome`, `codice_fiscale`, `data_nascita`, `id_classe`) VALUES
 (1, 'alessio', 'spolve', 'plsad', '2003-05-13', 2),
-(2, 'alessandro', 'tossa', 'altae', '2004-02-27', 2),
-(3, 'chri', 'vivo', 'viva', '2004-05-28', 2);
+(3, 'chri', 'vivo', 'viva', '2004-05-28', 2),
+(4, 'artur', 'cabral', 'arturoma', '2002-08-03', 5);
 
 --
 -- Indexes for dumped tables
@@ -89,13 +91,13 @@ ALTER TABLE `students`
 -- AUTO_INCREMENT for table `class`
 --
 ALTER TABLE `class`
-  MODIFY `id` bigint(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `students`
 --
 ALTER TABLE `students`
-  MODIFY `id` bigint(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

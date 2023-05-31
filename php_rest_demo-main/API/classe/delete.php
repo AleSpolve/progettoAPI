@@ -20,7 +20,6 @@ $classe = new classe($db);
 
 // set ID property of classe to be deleted
 $classe->id = $id;
-
 // delete the classe
 if ($classe->delete()) {
     echo '{';
